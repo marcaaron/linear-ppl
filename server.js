@@ -6,8 +6,8 @@ const port = process.env.PORT || 3000;
 const path = require('path');
 
 let db;
-
-app.get('/', (req, res) => res.sendFile(__dirname + "/build/"+'index.html'));
+app.use(express.static(__dirname + '/build'));
+app.get('/', (req, res) => res.render('index'));
 
 
 MongoClient.connect(process.env.MONGODB_URI, function(err, database){
