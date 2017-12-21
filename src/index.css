@@ -1,0 +1,219 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  user-select:none;
+}
+
+.app-container{
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.exercise{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	width:100%;
+	height:50px;
+	font-size: 25px;
+	background-color: black;
+	color:white;
+	position:relative;
+	/* margin:-1px; */
+}
+
+.star{
+	position:absolute;
+	left:20px;
+	top:10px;
+}
+
+.submit{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	background-color: grey;
+	font-size: 30px;
+	width:100%;
+	font-weight: bolder;
+	position:fixed;
+	bottom:0;
+	text-align: center;
+	height:70px;
+}
+
+.ex-container{
+	width:100%;
+}
+
+.sets, .reps{
+	display:flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.reps{
+	flex-wrap: wrap;
+}
+
+.set, .rep{
+	display:flex;
+	width:100%;
+	flex:1;
+	align-items: center;
+	justify-content: center;
+	background-color: hsl(1, 52%, 59%);
+	color:black;
+	font-size: 30px;
+	border:black 2px solid;
+	flex-basis:15%;
+}
+
+.rep{
+	height:60px;
+}
+.set{
+	height:30px;
+}
+
+.weight{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 25px;
+	margin:10px;
+	width:130px;
+	height:130px;
+	background:black;
+	color:white;
+	border-radius: 50%;
+}
+
+.weight-container{
+	display:flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.weight-stack{
+	flex:1;
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap:wrap;
+	margin:10px;
+}
+.plate{
+	flex:1;
+	border:black 2px solid;
+	height:40px;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	font-size:30px;
+}
+.plate-container{
+	display:flex;
+	align-items: center;
+	justify-content: space-around;
+	width:100%;
+}
+
+.bar{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	flex-basis:100%;
+	height:40px;
+	border:black 2px solid;
+}
+
+.label{
+	background-color: black;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	color:white;
+	padding:10px;
+}
+
+.success{
+	background-color: hsl(98, 84%, 50%);
+}
+
+.gold{
+	color:yellow;
+}
+
+.weight-box{
+	display:flex;
+	flex-direction: column;
+}
+.weight-controls{
+	display:flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.controls{
+	font-size:35px;
+}
+
+.barbell-img{
+	width:150px;
+}
+
+.rep-wheel{
+	display:flex;
+	align-items: center;
+	justify-content: space-between;
+	margin:0 auto;
+	font-size:20px;
+	margin:10px;
+	margin-left: 75px;
+	margin-right: 75px;
+	border:5px solid rgba(0,0,0,0.3);
+	border-radius:25px;
+}
+.amrap-plus, .amrap-minus{
+	padding:20px;
+	padding-left:5px;
+	padding-right:5px;
+	flex:1;
+	background: grey;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.amrap-plus{
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+.amrap-minus{
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+
+span.rep-counter{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	flex:1;
+	font-size:35px;
+	background: lightgrey;
+	padding:10px;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+.prev-weight-container{
+	display:flex;
+	flex-direction: column;
+	font-size:20px;
+	justify-content: center;
+	align-items: center;
+	background:black;
+	padding:5px;
+	color:white;
+}
