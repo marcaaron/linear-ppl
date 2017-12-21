@@ -15,7 +15,7 @@ MongoClient.connect('mongodb://marcaaron:gm15410@ds044917.mlab.com:44917/ppl', f
 		throw err
 	else{
 		db=database.db('ppl');
-		app.listen(3000, ()=> console.log(`app live on port 3000`));
+		app.listen(port, ()=> console.log(`app live on port 3000`));
 	}
 });
 
