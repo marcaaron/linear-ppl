@@ -3,9 +3,9 @@ const MongoClient = require('mongodb').MongoClient
 const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
-const path = require('path');
 
 let db;
+app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/build'));
 app.get('/', (req, res) => res.render('index'));
 
