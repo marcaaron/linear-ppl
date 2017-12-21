@@ -7,9 +7,7 @@ const path = require('path');
 
 let db;
 
-app.use(express.static('build'));
-
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../build', 'index.html')));
+app.get('/', (req, res) => res.sendFile(__dirname + "/build/"+'index.html'));
 
 
 MongoClient.connect(process.env.MONGODB_URI, function(err, database){
