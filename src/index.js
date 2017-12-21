@@ -420,6 +420,7 @@ class App extends React.Component{
 							</div>
 							}
 					</div>
+					<div className="spacer"></div>
 					<div onClick={(e)=>this.submitReps(e)} className="submit">NEXT</div>
 				</div>
 			);
