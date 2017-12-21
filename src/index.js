@@ -54,7 +54,7 @@ class App extends React.Component{
 				instance.setState({log:[]});
 	    	}
  		};
-		xhttp.open("POST", "http://localhost:3000");
+		xhttp.open("POST", "https://warm-gorge-45848.herokuapp.com");
 		xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 		xhttp.send(JSON.stringify(log));
 	}
@@ -93,7 +93,7 @@ class App extends React.Component{
 
 	    	}
 		};
-		xhttp.open("GET","http://localhost:3000/json");
+		xhttp.open("GET","https://warm-gorge-45848.herokuapp.com/json");
 		xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 		xhttp.send();
 	}

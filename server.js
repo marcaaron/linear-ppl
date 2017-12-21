@@ -7,7 +7,7 @@ let db;
 
 app.use(express.static('build'));
 
-app.get('/', (req, res) => res.sendFile('/index.html'));
+app.get('/', (req, res) => res.sendFile('index.html'));
 
 
 MongoClient.connect(process.env.MONGODB_URI, function(err, database){
