@@ -3,15 +3,11 @@ const MongoClient = require('mongodb').MongoClient
 const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
-const path = require('path');
-
 let db;
 
-app.use(express.static(__dirname + '/build'));
+app.use(express.static('build'));
 
-app.get('/', function(req, res){
-	res.sendFile(path.join(__dirname + '/index.html'));	
-});
+app.get('/', (req, res) => res.sendFile('/index.html'));
 
 
 MongoClient.connect(process.env.MONGODB_URI, function(err, database){
