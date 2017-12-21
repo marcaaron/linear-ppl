@@ -2,15 +2,15 @@ const express = require('express');
 const MongoClient = require('mongodb').MongoClient
 const bodyParser = require('body-parser');
 const app = express();
-const port = process.env.API_PORT || 3001;
+const port = process.env.PORT || 3000;
 let db;
 
-app.use(express.static('public'));
+app.use(express.static('build'));
 
 app.get('/', (req, res) => res.sendFile('/index.html'));
 
 
-MongoClient.connect('mongodb://marcaaron:gm15410@ds044917.mlab.com:44917/ppl', function(err, database){
+MongoClient.connect(process.env.MONGODB_URI, function(err, database){
 	if (err)
 		throw err
 	else{
