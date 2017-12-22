@@ -99,29 +99,29 @@ class App extends React.Component{
 	}
 
 	componentWillMount(){
-		this.getJSON();
-
-		// if(
-		// 	localStorage.getItem('log') &&
-		// 	localStorage.getItem('reps') &&
-		// 	localStorage.getItem('exList') &&
-		// 	localStorage.getItem('set')){
-		// 	const exList = JSON.parse(localStorage.getItem('exList'));
-		// 	const log = JSON.parse(localStorage.getItem('log'));
-		// 	const reps = JSON.parse(localStorage.getItem('reps'));
-		// 	const set = JSON.parse(localStorage.getItem('set'));
-		// 	this.setState({log, reps, set, exList});
-		// }
+		if(
+			localStorage.getItem('log') &&
+			localStorage.getItem('reps') &&
+			localStorage.getItem('exList') &&
+			localStorage.getItem('set')){
+			const exList = JSON.parse(localStorage.getItem('exList'));
+			const log = JSON.parse(localStorage.getItem('log'));
+			const reps = JSON.parse(localStorage.getItem('reps'));
+			const set = JSON.parse(localStorage.getItem('set'));
+			this.setState({log, reps, set, exList});
+		}else{
+			this.getJSON();
+		}
 	}
 
 	componentDidUpdate(){
 		//while workout is ongoing save log state in localStorage
 		//once it is submitted we will destroy the local state and start over
 
-		// localStorage.setItem('exList', JSON.stringify(this.state.exList));
-		// localStorage.setItem('log', JSON.stringify(this.state.log));
-		// localStorage.setItem('reps', JSON.stringify(this.state.reps));
-		// localStorage.setItem('set', JSON.stringify(this.state.set));
+		localStorage.setItem('exList', JSON.stringify(this.state.exList));
+		localStorage.setItem('log', JSON.stringify(this.state.log));
+		localStorage.setItem('reps', JSON.stringify(this.state.reps));
+		localStorage.setItem('set', JSON.stringify(this.state.set));
 	}
 
 	incAmrap(e){
@@ -225,7 +225,6 @@ class App extends React.Component{
 			const exList = [...this.state.exList];
 			exList[index].done = true;
 			this.setState({currentEx:null, set:0, exIsOpen:false, exList, log, toggleOnce:false, weightCalcToggle:false});
-
 			// calls function to test whether the workout is complete
 			this.workoutDone();
 		// Increment the current set position and push rep data to log reset reps
@@ -253,7 +252,11 @@ class App extends React.Component{
 		for(let i=0; i<this.state.exList.length;i++){
 			workoutComplete = this.state.exList[i].done;
 		}
-		workoutComplete && this.setState({workoutComplete})
+		if(workoutComplete){
+			this.setState({workoutComplete});
+			localStorage.clear();
+		}
+
 	}
 
 	incWeight(e){
