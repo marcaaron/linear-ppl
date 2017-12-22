@@ -4,6 +4,7 @@ body {
   box-sizing: border-box;
   user-select:none;
   font-family: 'Varela Round', sans-serif;
+  background-color: black;
 }
 
 .app-container{
@@ -50,6 +51,8 @@ body {
 
 .ex-container{
 	width:100%;
+	background-color: #51d4be;
+	background-image: url("asfalt-dark.png");
 }
 
 .sets, .reps{
