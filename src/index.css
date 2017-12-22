@@ -4,7 +4,6 @@ body {
   font-family: sans-serif;
   box-sizing: border-box;
   user-select:none;
-  max-width: 400px;
 }
 
 .app-container{
@@ -12,6 +11,8 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	max-width: 600px;
+	margin:0 auto;
 }
 .exercise{
 	display:flex;
