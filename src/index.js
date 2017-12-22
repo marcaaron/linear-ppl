@@ -101,16 +101,18 @@ class App extends React.Component{
 	componentWillMount(){
 		if(
 			localStorage.getItem('workoutLogs') &&
+			localStorage.getItem('prevWorkout') &&
 			localStorage.getItem('log') &&
 			localStorage.getItem('reps') &&
 			localStorage.getItem('exList') &&
 			localStorage.getItem('set')){
+			const prevWorkout = JSON.parse(localStorage.getItem('prevWorkout'));
 			const exList = JSON.parse(localStorage.getItem('exList'));
 			const log = JSON.parse(localStorage.getItem('log'));
 			const reps = JSON.parse(localStorage.getItem('reps'));
 			const set = JSON.parse(localStorage.getItem('set'));
 			const workoutLogs = JSON.parse(localStorage.getItem('workoutLogs'));
-			this.setState({log, reps, set, exList, workoutLogs});
+			this.setState({log, reps, set, exList, workoutLogs, prevWorkout});
 		}else{
 			this.getJSON();
 		}
@@ -124,6 +126,8 @@ class App extends React.Component{
 		localStorage.setItem('log', JSON.stringify(this.state.log));
 		localStorage.setItem('reps', JSON.stringify(this.state.reps));
 		localStorage.setItem('set', JSON.stringify(this.state.set));
+		localStorage.setItem('prevWorkout', JSON.stringify(this.state.prevWorkout));
+
 	}
 
 	incAmrap(e){
