@@ -100,6 +100,7 @@ class App extends React.Component{
 
 	componentWillMount(){
 		if(
+			localStorage.getItem('workoutLogs') &&
 			localStorage.getItem('log') &&
 			localStorage.getItem('reps') &&
 			localStorage.getItem('exList') &&
@@ -108,7 +109,8 @@ class App extends React.Component{
 			const log = JSON.parse(localStorage.getItem('log'));
 			const reps = JSON.parse(localStorage.getItem('reps'));
 			const set = JSON.parse(localStorage.getItem('set'));
-			this.setState({log, reps, set, exList});
+			const workoutLogs = JSON.parse(localStorage.getItem('workoutLogs'));
+			this.setState({log, reps, set, exList, workoutLogs});
 		}else{
 			this.getJSON();
 		}
@@ -117,7 +119,7 @@ class App extends React.Component{
 	componentDidUpdate(){
 		//while workout is ongoing save log state in localStorage
 		//once it is submitted we will destroy the local state and start over
-
+		localStorage.setItem('workoutLogs', JSON.stringify(this.state.workoutLogs));
 		localStorage.setItem('exList', JSON.stringify(this.state.exList));
 		localStorage.setItem('log', JSON.stringify(this.state.log));
 		localStorage.setItem('reps', JSON.stringify(this.state.reps));
