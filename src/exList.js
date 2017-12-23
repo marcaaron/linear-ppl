@@ -1,7 +1,7 @@
 const exList =
 
 {
-	LEGS1: [
+	'LEGS (1)': [
 		{
 			name:'SQUAT',
 			sets: [1,2,3],
@@ -71,7 +71,7 @@ const exList =
 			inc:5,
 		}
 	],
-	PUSH1: [
+	'PUSH (1)': [
 		{
 			name:'BENCH PRESS',
 			sets: [1,2,3,4,5],
@@ -152,7 +152,7 @@ const exList =
 		}
 	],
 
-	PULL1: [
+	'PULL (1)': [
 		{
 			name:'DEADLIFT',
 			sets: [1],
@@ -238,7 +238,7 @@ const exList =
 			inc:5,
 		}
 	],
-	LEGS2: [
+	'LEGS (2)': [
 		{
 			name:'SQUAT',
 			sets: [1,2,3],
@@ -308,7 +308,7 @@ const exList =
 			inc:5,
 		}
 	],
-	PUSH2: [
+	'PUSH (2)': [
 		{
 			name:'OVERHEAD PRESS',
 			sets: [1,2,3,4,5],
@@ -388,7 +388,7 @@ const exList =
 			inc:5,
 		}
 	],
-	PULL2: [
+	'PULL (2)': [
 		{
 			name:'BARBELL ROW',
 			sets: [1,2,3,4,5],
