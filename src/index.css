@@ -36,6 +36,8 @@ body {
 }
 
 .star{
+	position:absolute;
+	left:20px;
 }
 
 .submit{
@@ -43,11 +45,10 @@ body {
 	justify-content: center;
 	align-items: center;
 	background-color: black;
-	border:outset 5px grey;
-	border-bottom: none;
+	border:outset 5px #0cfac59c;
 	color:white;
 	font-size: 30px;
-	width:100%;
+	width:98% !important;
 	max-width: 600px;
 	font-weight: bolder;
 	position:fixed;
