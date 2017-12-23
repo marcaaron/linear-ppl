@@ -46,8 +46,9 @@ body {
 	justify-content: center;
 	align-items: center;
 	background-color: black;
-	border:outset 5px rgba(255,255,255,0.3);
+	border:outset 5px grey;
 	border-bottom: none;
+	color:white;
 	font-size: 30px;
 	width:100%;
 	max-width: 600px;
