@@ -99,8 +99,6 @@ class App extends React.Component{
 	}
 
 	componentWillMount(){
-		document.requestFullscreen();
-
 		if(
 			localStorage.getItem('workoutLogs') &&
 			localStorage.getItem('prevWorkout') &&
