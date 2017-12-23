@@ -82,7 +82,7 @@ body {
 	flex:1;
 	align-items: center;
 	justify-content: center;
-	background-color: hsl(1, 52%, 59%);
+	background-color: rgba(255,255,255,0.8);
 	color:black;
 	font-size: 30px;
 	border:3px solid rgba(0,0,0,1);
@@ -94,7 +94,7 @@ body {
 	height:40px;
 }
 .set{
-	height:30px;
+	height:40px;
 }
 
 .weight{
@@ -162,7 +162,9 @@ body {
 }
 
 .success{
-	background-color: hsl(98, 84%, 50%);
+	background-color: rgba(0,0,0,0.8);
+	color:white;
+
 }
 
 .gold{
