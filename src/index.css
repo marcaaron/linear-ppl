@@ -13,7 +13,7 @@ body {
 	align-items: center;
 	justify-content: flex-start;
 	max-width: 600px;
-	height: 100vh;
+	min-height: 100vh;
 	margin:0 auto;
 	background-color: #51d4be;
 	background-image: url("asfalt-dark.png");
@@ -87,12 +87,12 @@ body {
 	background-color: hsl(1, 52%, 59%);
 	color:black;
 	font-size: 30px;
-	border:2px solid rgba(0,0,0,0.4);
+	border:3px solid rgba(0,0,0,1);
 	flex-basis:15%;
 }
 
 .rep{
-	height:60px;
+	height:40px;
 }
 .set{
 	height:30px;
