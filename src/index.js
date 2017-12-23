@@ -445,6 +445,7 @@ class App extends React.Component{
 					return index === this.state.currentWorkout ? name : null
 				})}</h1> : null}
 				{this.openExercise()}
+				{!this.state.exIsOpen? <i className="fa fa-arrows-alt fullscreen"></i> : null}
 				{this.state.workoutComplete && !this.state.exIsOpen ? <div onClick={this.sendJSON} className="submit">LOG WORKOUT</div> : null}
 
 				{/* <div onClick={this.sendJSON} className="submit">LOG WORKOUT</div> */}
