@@ -35,27 +35,31 @@ class App extends React.Component{
 		this.sendJSON = this.sendJSON.bind(this);
 		this.getJSON = this.getJSON.bind(this);
 		this.calcWeight = this.calcWeight.bind(this);
-		this.fullScreen = this.fullScreen.bind(this);
+		// this.fullScreen = this.fullScreen.bind(this);
 	}
 
-	fullScreen(){
-		if(!this.state.toggleFS){
-			let el = document.documentElement,
-			rfs =
-				el.requestFullscreen
-				|| el.webkitRequestFullScreen
-		        || el.mozRequestFullScreen
-		        || el.msRequestFullscreen;
-			rfs.call(el);
-			this.setState({toggleFS:true})
-		}else{
-			function getexitfullscreen(){
-    			return document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen
-			}
-			getexitfullscreen.call(document);
-			this.setState({toggleFS:false})
-		}
-	}
+	// fullScreen(){
+	// 	if(!this.state.toggleFS){
+	// 		let el = document.documentElement,
+	// 		rfs =
+	// 			el.requestFullscreen
+	// 			|| el.webkitRequestFullScreen
+	// 	        || el.mozRequestFullScreen
+	// 	        || el.msRequestFullscreen;
+	// 		rfs.call(el);
+	// 		this.setState({toggleFS:true})
+	// 	}else{
+	// 		let el = document.documentElement,
+	// 		rfs =
+	// 			el.exitFullscreen
+	// 			|| el.webkitRequestFullScreen
+	// 	        || el.webkitExitFullscreen
+	// 	        || el.mozCancelFullScreen
+	// 			|| el.msExitFullscreen;
+	// 		rfs.call(el);
+	// 		this.setState({toggleFS:false})
+	// 	}
+	// }
 
 	sendJSON(){
 		this.setState({exIsOpen:false, currentEx:null, reps:null, set:0, workoutComplete:false});
@@ -465,7 +469,7 @@ class App extends React.Component{
 					return index === this.state.currentWorkout ? name : null
 				})}</h1> : null}
 				{this.openExercise()}
-				{!this.state.exIsOpen? <i onClick={this.fullScreen} className="fa fa-arrows-alt fullscreen"></i> : null}
+				{/* {!this.state.exIsOpen? <i onClick={this.fullScreen} className="fa fa-arrows-alt fullscreen"></i> : null} */}
 				{this.state.workoutComplete && !this.state.exIsOpen ? <div onClick={this.sendJSON} className="submit">LOG WORKOUT</div> : null}
 
 				{/* <div onClick={this.sendJSON} className="submit">LOG WORKOUT</div> */}
