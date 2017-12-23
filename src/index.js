@@ -468,6 +468,7 @@ class Exercise extends React.Component{
 			<div style={!this.props.exIsOpen ? {height:'60px'}:null} onClick={(e)=>this.openEx(e)} className="exercise">
 				<i className={this.props.log[this.props.index]&& this.props.log[this.props.index].sets.length===this.props.exList[this.props.index].sets.length ? 'fa fa-star star gold' : 'fa fa-star-o star' }></i>
 				{this.props.name}
+				{this.prop.exIsOpen ? <i className="fa fa-angle-double-left back"></i> : null}
 			</div>
 		)
 	}
