@@ -405,14 +405,14 @@ class App extends React.Component{
 					{/* {this.state.log[index].reps[2]} */}
 					<div className="weight-container">
 						<div className="weight-box">
-							<div className="weight">
-								{this.state.exList[index].weight + ' lbs'}
-							</div>
 							<div className="weight-controls">
 								<i onClick={(e)=>this.decWeight(e)} className="fa fa-minus controls"></i>
 								<i onClick={(e)=>this.incWeight(e)} className="fa fa-plus controls"></i>
-
 							</div>
+							<div className="weight">
+								{this.state.exList[index].weight + ' lbs'}
+							</div>
+
 						</div>
 							{this.state.exList[index].bar ?
 							<div className="weight-stack">
