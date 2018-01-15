@@ -21,4 +21,5 @@ Another issue some lifters run into is quickly figuring out the math of how much
 * And the ability to further customize workouts.
 	In theory, an app like this could be programmed to run any number of complicated workout routines running on a 3, 6, 10, or even 30 day cycle with different exercise groups each day. As it stands anyone who'd like to use this would need to set up their own MongoDB database and program the exercises in. It would be nice to create a more user friendly adaptation at some point.
 
-Test drive the app deployed @ Heroku
+Test drive the app deployed @ **Heroku**:
+[https://pacific-sierra-59887.herokuapp.com](https://pacific-sierra-59887.herokuapp.com/)

@@ -14,7 +14,7 @@ MongoClient.connect(process.env.MONGODB_URI, function(err, database){
 	if (err)
 		throw err
 	else{
-		db=database.db('ppl');
+		db=database.db('ppl-public');
 		app.listen(port, ()=> console.log(`app live on port 3000`));
 	}
 });
