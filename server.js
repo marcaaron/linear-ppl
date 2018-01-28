@@ -12,7 +12,7 @@ app.use(express.static('build'));
 
 app.get('/', (req, res) => res.sendFile('/index.html'));
 
-app.get('/archive', (req, res) => res.sendFile(resolve(__dirname, 'archive.html'));
+app.get('/archive', (req, res) => res.sendFile(resolve(__dirname, 'archive.html')));
 
 MongoClient.connect(mongoURI, function(err, database){
 	if (err)
