@@ -39,8 +39,8 @@ app.get('/json', function(req, res){
 	});
 });
 
-app.get('/incline', function(req, res){
-	db.collection('exLists').find({}, {name: "INCLINE PRESS"}).toArray(function(err, incline){
-		res.status(200).json({'incline': incline});
+app.get('/workouts', function(req, res){
+	db.collection('exLists').find({}).toArray(function(err, workouts){
+		res.status(200).json({'workouts': workouts});
 	});
 });
