@@ -4,22 +4,21 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 let db;
-const mongoURI = process.env.MONGODB_URI;
+const mongoURI = process.env.MONGODB_URI || 'mongodb://marcaaron:gm15410@ds044917.mlab.com:44917/ppl';
 const {resolve} = require('path');
-
 
 app.use(express.static('build'));
 
 app.get('/', (req, res) => res.sendFile('/index.html'));
 
-app.get('/archive', (req, res) => res.sendFile(resolve(__dirname, 'archive.html')));
+app.get('/archive', (req, res) => res.sendFile(resolve(__dirname, '/build/archive.html')));
 
 MongoClient.connect(mongoURI, function(err, database){
 	if (err)
 		throw err
 	else{
 		db=database.db('ppl');
-		app.listen(port, ()=> console.log(`app live on port 3000`));
+		app.listen(port, ()=> console.log(`app live on port 3000`, __dirname));
 	}
 });
 
