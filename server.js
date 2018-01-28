@@ -5,12 +5,14 @@ const app = express();
 const port = process.env.PORT || 3000;
 let db;
 const mongoURI = process.env.MONGODB_URI;
+const {resolve} = require('path');
+
 
 app.use(express.static('build'));
 
 app.get('/', (req, res) => res.sendFile('/index.html'));
 
-app.get('/archive', (req, res) => res.sendFile('/archive.html'));
+app.get('/archive', (req, res) => res.sendFile(resolve(__dirname, 'archive.html'));
 
 MongoClient.connect(mongoURI, function(err, database){
 	if (err)

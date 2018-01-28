@@ -13,9 +13,10 @@
   },
   "scripts": {
     "start": "node server.js",
-	"build": "react-scripts build"
+    "build": "react-scripts build"
   },
   "devDependencies": {
-    "nodemon": "^1.14.0"
+    "nodemon": "^1.14.0",
+    "path": "^0.12.7"
   }
 }
