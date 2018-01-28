@@ -11,9 +11,7 @@ app.use(express.static('build'));
 
 app.get('/', (req, res) => res.sendFile('/index.html'));
 
-app.get('/archive', (req, res) => res.sendFile(resolve(__dirname, 'README.md')));
-
-app.get('/hello', (req, res) => res.send('Hi'));
+app.get('/archive', (req, res) => res.sendFile(resolve(__dirname, '/build', '/archive.html')));
 
 MongoClient.connect(mongoURI, function(err, database){
 	if (err)
