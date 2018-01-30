@@ -336,7 +336,7 @@ class App extends React.Component{
 				}else if(this.state.workoutLogs[5].workout[index].failCount<3){
 					weight = this.state.workoutLogs[5].workout[index].weight;
 				}else{
-					weight = (Math.round((this.state.workoutLogs[2].workout[index].weight * 0.9)*4)/4).toFixed(2);
+					weight = (Math.round((this.state.workoutLogs[5].workout[index].weight * 0.9)*4)/4).toFixed(2);
 				}
 			}
 			const exList = [...this.state.exList]
