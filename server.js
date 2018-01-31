@@ -2,6 +2,7 @@ const express = require('express');
 const MongoClient = require('mongodb').MongoClient
 const bodyParser = require('body-parser');
 const app = express();
+const {resolve} = require('path');
 const port = process.env.PORT || 3000;
 let db;
 const mongoURI = process.env.MONGODB_URI || 'mongodb://marcaaron:gm15410@ds044917.mlab.com:44917/ppl';
@@ -10,7 +11,7 @@ app.use(express.static('build'));
 
 app.get('/', (req, res) => res.sendFile('/index.html'));
 
-app.get('/archive', (req, res) => res.sendFile('/archive'));
+app.get('/archive', (req, res) => res.sendFile(resolve(__dirname, '/archive')));
 
 MongoClient.connect(mongoURI, function(err, database){
 	if (err)
