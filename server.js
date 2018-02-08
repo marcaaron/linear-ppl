@@ -48,7 +48,7 @@ app.get('/json', function(req, res){
 });
 
 app.get('/workouts', function(req, res){
-	db.collection('exLists').find({}).toArray(function(err, workouts){
+	db.collection('exLists').find({}).sort({_id:-1}).toArray(function(err, workouts){
 		res.status(200).json({'workouts': workouts});
 	});
 });
