@@ -49,6 +49,7 @@ app.get('/json', function(req, res){
 
 app.get('/workouts', function(req, res){
 	db.collection('exLists').find({}).sort({_id:-1}).toArray(function(err, workouts){
+		workouts.reverse();
 		res.status(200).json({'workouts': workouts});
 	});
 });
