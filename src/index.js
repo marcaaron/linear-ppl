@@ -35,31 +35,7 @@ class App extends React.Component{
 		this.sendJSON = this.sendJSON.bind(this);
 		this.getJSON = this.getJSON.bind(this);
 		this.calcWeight = this.calcWeight.bind(this);
-		// this.fullScreen = this.fullScreen.bind(this);
 	}
-
-	// fullScreen(){
-	// 	if(!this.state.toggleFS){
-	// 		let el = document.documentElement,
-	// 		rfs =
-	// 			el.requestFullscreen
-	// 			|| el.webkitRequestFullScreen
-	// 	        || el.mozRequestFullScreen
-	// 	        || el.msRequestFullscreen;
-	// 		rfs.call(el);
-	// 		this.setState({toggleFS:true})
-	// 	}else{
-	// 		let el = document.documentElement,
-	// 		rfs =
-	// 			el.exitFullscreen
-	// 			|| el.webkitRequestFullScreen
-	// 	        || el.webkitExitFullscreen
-	// 	        || el.mozCancelFullScreen
-	// 			|| el.msExitFullscreen;
-	// 		rfs.call(el);
-	// 		this.setState({toggleFS:false})
-	// 	}
-	// }
 
 	sendJSON(){
 		this.setState({exIsOpen:false, currentEx:null, reps:null, set:0, workoutComplete:false});
@@ -298,7 +274,7 @@ class App extends React.Component{
 				}, this);
 		let exList = [...this.state.exList];
 		let weight = this.state.exList[index].weight;
-		exList[index].weight = weight + 2.5;
+		exList[index].weight = weight + 0.25;
 		this.setState({exList});
 	}
 
@@ -309,7 +285,7 @@ class App extends React.Component{
 				}, this);
 		let exList = [...this.state.exList];
 		let weight = this.state.exList[index].weight;
-		exList[index].weight = weight - 2.5;
+		exList[index].weight = weight - 0.25;
 		this.setState({exList});
 	}
 
