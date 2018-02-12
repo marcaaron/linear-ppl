@@ -275,6 +275,7 @@ class App extends React.Component{
 		let exList = [...this.state.exList];
 		let weight = this.state.exList[index].weight;
 		exList[index].weight = weight + 0.25;
+		console.log(exList);
 		this.setState({exList});
 	}
 
@@ -286,6 +287,7 @@ class App extends React.Component{
 		let exList = [...this.state.exList];
 		let weight = this.state.exList[index].weight;
 		exList[index].weight = weight - 0.25;
+		console.log(exList);
 		this.setState({exList});
 	}
 
