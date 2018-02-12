@@ -48,7 +48,7 @@ class App extends React.Component{
 
 		const xhttp = new XMLHttpRequest();   // new HttpRequest instance
 		xhttp.onreadystatechange = function() {
-	    	if (this.readyState == 4 && this.status == 200) {
+	    	if (this.readyState === 4 && this.status === 200) {
 	       		console.log('sending JSON');
 				instance.getJSON();
 				instance.setState({log:[]});
@@ -63,7 +63,7 @@ class App extends React.Component{
 		const instance = this;
 		const xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function(){
-			if (xhttp.readyState == 4 && xhttp.status == 200) {
+			if (xhttp.readyState === 4 && xhttp.status === 200) {
 				console.log(JSON.parse(xhttp.response));
 				if(JSON.parse(xhttp.response).workouts.length !== 0){
 		       		const prevWorkout = JSON.parse(xhttp.response).workouts[0].prevWorkout;
