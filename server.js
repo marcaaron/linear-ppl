@@ -5,7 +5,7 @@ const app = express();
 const path = require('path');
 const port = process.env.PORT || 3000;
 let db;
-const mongoURI = process.env.MONGODB_URI || 'mongodb://marcaaron:gm15410@ds044917.mlab.com:44917/ppl';
+const mongoURI = process.env.MONGODB_URI;
 
 console.log(__dirname);
 app.use(express.static('build'));
