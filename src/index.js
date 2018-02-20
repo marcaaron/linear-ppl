@@ -288,8 +288,8 @@ class App extends React.Component{
 
 			if(this.state.exList[index].lookback < 4){
 				if(this.state.workoutLogs[2].workout[index].failCount===0){
-					weight = this.state.workoutLogs[2].workout[index].weight +
-					this.state.exList[index].inc;
+					weight = parseFloat(this.state.workoutLogs[2].workout[index].weight +
+					this.state.exList[index].inc);
 				}else if(this.state.workoutLogs[2].workout[index].failCount<3){
 					weight = this.state.workoutLogs[2].workout[index].weight;
 				}else{
@@ -297,8 +297,8 @@ class App extends React.Component{
 				}
 			}else{
 				if(this.state.workoutLogs[5].workout[index].failCount===0){
-					weight = this.state.workoutLogs[5].workout[index].weight +
-					this.state.exList[index].inc;
+					weight = parseFloat(this.state.workoutLogs[5].workout[index].weight +
+					this.state.exList[index].inc);
 				}else if(this.state.workoutLogs[5].workout[index].failCount<3){
 					weight = this.state.workoutLogs[5].workout[index].weight;
 				}else{

@@ -92,7 +92,7 @@ const exList =
 			stack: true,
 			done:false,
 			lookback:6,
-			inc:5,
+			inc:2.5,
 		},
 		{
 			name:'OVERHEAD PRESS',
@@ -107,7 +107,7 @@ const exList =
 			stack: true,
 			done: false,
 			lookback:6,
-			inc:5,
+			inc:2.5,
 		},
 		{
 			name:'INCLINE PRESS',
@@ -122,7 +122,7 @@ const exList =
 			stack: true,
 			done: false,
 			lookback:3,
-			inc:5,
+			inc:2.5,
 		},
 		{
 			name:'TRI PD/LAT RAISE',
@@ -345,7 +345,7 @@ const exList =
 			stack:true,
 			done:false,
 			lookback:6,
-			inc:5,
+			inc:2.5,
 		},
 		{
 			name:'BENCH PRESS',
@@ -360,7 +360,7 @@ const exList =
 			stack:true,
 			done: false,
 			lookback:6,
-			inc:5,
+			inc:2.5,
 		},
 		{
 			name:'INCLINE PRESS',
@@ -375,7 +375,7 @@ const exList =
 			stack:true,
 			done: false,
 			lookback:3,
-			inc:5,
+			inc:2.5,
 		},
 		{
 			name:'TRI PD/LAT RAISE',
