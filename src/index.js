@@ -41,7 +41,6 @@ class App extends React.Component{
 		const xhttp = new XMLHttpRequest();   // new HttpRequest instance
 		xhttp.onreadystatechange = function() {
 	    	if (this.readyState === 4 && this.status === 200) {
-	       		console.log('sending JSON');
 				instance.getJSON();
 				instance.setState({log:[]});
 	    	}
@@ -153,7 +152,7 @@ class App extends React.Component{
 		}, this);
 
 		if(this.state.exList[index].done){
-			alert('You have already completed this exercise');
+			// alert('You have already completed this exercise');
 			this.setState({exIsOpen:false, currentEx:null});
 		}else{
 			if(!this.state.exIsOpen){
@@ -172,8 +171,8 @@ class App extends React.Component{
 
 	submitReps = (e) => {
 		e.preventDefault();
-		//Returns index based on currentEx state
 
+		//Returns index based on currentEx state
 		const index = this.state.exList.findIndex(function(ex){
 			return ex.name === this.state.currentEx;
 		}, this);
