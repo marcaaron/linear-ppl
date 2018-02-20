@@ -2,6 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import exList from './exList';
+import ExerciseName from './components/ExerciseName';
+import Sets from './components/Sets';
+import Reps from './components/Reps';
+import PreviousWeight from './components/PreviousWeight';
+import WeightContainer from './components/WeightContainer';
 
 class App extends React.Component{
 	constructor(){
@@ -22,22 +27,9 @@ class App extends React.Component{
 			weightCalcToggle:false,
 			toggleFS:false
 		}
-
-		this.hClick = this.hClick.bind(this);
-		this.openExercise = this.openExercise.bind(this);
-		this.logReps = this.logReps.bind(this);
-		this.submitReps = this.submitReps.bind(this);
-		this.incWeight = this.incWeight.bind(this);
-		this.decWeight = this.decWeight.bind(this);
-		this.workoutDone = this.workoutDone.bind(this);
-		this.incAmrap = this.incAmrap.bind(this);
-		this.decAmrap = this.decAmrap.bind(this);
-		this.sendJSON = this.sendJSON.bind(this);
-		this.getJSON = this.getJSON.bind(this);
-		this.calcWeight = this.calcWeight.bind(this);
 	}
 
-	sendJSON(){
+	sendJSON = () =>{
 		this.setState({exIsOpen:false, currentEx:null, reps:null, set:0, workoutComplete:false});
 		const instance = this;
 		const log = {};
@@ -59,7 +51,7 @@ class App extends React.Component{
 		xhttp.send(JSON.stringify(log));
 	}
 
-	getJSON(){
+	getJSON = () =>{
 		const instance = this;
 		const xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function(){
@@ -132,7 +124,7 @@ class App extends React.Component{
 		localStorage.setItem('currentWorkout', JSON.stringify(this.state.currentWorkout));
 	}
 
-	incAmrap(e){
+	incAmrap = (e) => {
 		e.preventDefault();
 		const index = this.state.exList.findIndex(function(ex){
 			return ex.name === this.state.currentEx;
@@ -144,7 +136,7 @@ class App extends React.Component{
 		this.setState({log});
 	}
 
-	decAmrap(e){
+	decAmrap = (e) => {
 		e.preventDefault();
 		const index = this.state.exList.findIndex(function(ex){
 			return ex.name === this.state.currentEx;
@@ -156,7 +148,7 @@ class App extends React.Component{
 		this.setState({log});
 	}
 
-	hClick(exName){
+	hClick = (exName) => {
 		const index = this.state.exList.findIndex(function(ex){
 			return ex.name === exName;
 		}, this);
@@ -173,13 +165,13 @@ class App extends React.Component{
 		}
 	}
 
-	logReps(e, index){
+	logReps = (e, index) => {
 		e.preventDefault();
 		const reps = index+1;
 		this.setState({reps});
 	}
 
-	submitReps(e){
+	submitReps = (e) => {
 		e.preventDefault();
 		//Returns index based on currentEx state
 
@@ -255,7 +247,7 @@ class App extends React.Component{
 		}
 	}
 
-	workoutDone(){
+	workoutDone = () => {
 		let workoutComplete = false;
 		for(let i=0; i<this.state.exList.length;i++){
 			workoutComplete = this.state.exList[i].done;
@@ -264,10 +256,9 @@ class App extends React.Component{
 			this.setState({workoutComplete});
 			localStorage.clear();
 		}
-
 	}
 
-	incWeight(e){
+	incWeight = (e) => {
 		e.preventDefault();
 		const index = this.state.exList.findIndex(function(ex){
 					return ex.name === this.state.currentEx;
@@ -278,7 +269,7 @@ class App extends React.Component{
 		this.setState({exList});
 	}
 
-	decWeight(e){
+	decWeight = (e) => {
 		e.preventDefault();
 		const index = this.state.exList.findIndex(function(ex){
 					return ex.name === this.state.currentEx;
@@ -289,7 +280,7 @@ class App extends React.Component{
 		this.setState({exList});
 	}
 
-	calcWeight(){
+	calcWeight = () => {
 		if(!this.state.weightCalcToggle){
 			const index = this.state.exList.findIndex(function(ex){
 				return ex.name === this.state.currentEx;
@@ -321,13 +312,38 @@ class App extends React.Component{
 		}
 	}
 
-	openExercise(){
-		if(!this.state.exIsOpen){
-			return this.state.exList.map((ex, index)=>{
-				return <Exercise exIsOpen={this.state.exIsOpen} hClick={this.hClick} index={index} log={this.state.log} exList={this.state.exList} key={index} name={ex.name}/>
-			})
-		} else{
+	handleChange = (e) => {
+		e.preventDefault();
+		const index = this.state.exList.findIndex(function(ex){
+					return ex.name === this.state.currentEx;
+				}, this);
+		let exList = [...this.state.exList];
+		exList[index].weight = parseFloat(e.target.value);
+		this.setState({exList});
+	}
 
+	render(){
+		if(!this.state.exIsOpen){
+			return(
+				<div className="app-container">
+					<h1>{Object.keys(exList).map((name, index)=>{
+						return index === this.state.currentWorkout ? name : null
+					})}
+					</h1>
+					{this.state.exList.map((ex, index)=>{
+						return <ExerciseName
+							exIsOpen={this.state.exIsOpen}
+							hClick={this.hClick}
+							index={index}
+							log={this.state.log}
+							exList={this.state.exList}
+							key={index}
+							name={ex.name}
+						/>
+					})}
+				</div>
+			);
+		}else{
 			this.calcWeight();
 
 			// sets up a reference to index based on currentEx(ercise) name state
@@ -357,121 +373,67 @@ class App extends React.Component{
 			}
 
 			return(
-				<div className="ex-container">
-					<Exercise exIsOpen={this.state.exIsOpen} hClick={this.hClick} key={index} name={this.state.currentEx} index={index} log={this.state.log} exList={this.state.exList}
-					/>
-					<div className="label">SETS</div>
-					<div className="sets">
-						{this.state.exList[index].sets.map((set, index)=>{
-							return <div key={set} className={set > this.state.set ? 'set':'set success'}>{set}</div>
-						})}
-					</div>
-					<div className="label">REPS</div>
-					<div className="reps">
-						{this.state.exList[index].reps[this.state.set].map((rep, i)=>{
-							return <div onClick={(e)=>this.logReps(e, i)} key={i} className={i+1<=this.state.reps || this.state.set===this.state.exList[index].sets.length ? 'rep success':'rep'}>{rep}</div>
-						})}
-					</div>
+				<div className="app-container">
+					<div className="ex-container">
+						<ExerciseName
+							exIsOpen={this.state.exIsOpen}
+							hClick={this.hClick}
+							key={index}
+							name={this.state.currentEx}
+							index={index}
+							log={this.state.log}
+							exList={this.state.exList}
+						/>
+
+						<div className="label">SETS</div>
+						<Sets
+							sets={this.state.exList[index].sets}
+							set={this.state.set}
+						/>
+
+						<div className="label">REPS</div>
+						<Reps
+							repList={this.state.exList[index].reps[this.state.set]}
+							logReps={this.logReps}
+							set={this.state.set}
+							setLength={this.state.exList[index].sets.length}
+							reps={this.state.reps}
+						/>
 
 
-					{/* MAIN LOGIC FOR INCREMENTING AND DISPLAYING WEIGHT */}
+						{/* MAIN LOGIC FOR INCREMENTING AND DISPLAYING WEIGHT */}
 
 
-					<div className="prev-weight-container">
-						<div className="prev-weight">PREVIOUS WEIGHT: <span>
-						{/* check current exercise for lookback flag
-						if current exercise lookback = 3 get result from workout log 2 else get result from workoutlog 5 */}
-						{
-							this.state.exList[index].lookback < 4 ? this.state.workoutLogs[2].workout[index].weight + ' lbs' : this.state.workoutLogs[5].workout[index].weight + ' lbs'
-						}
-						</span>
-						</div>
+						<PreviousWeight
+							lookback={this.state.exList[index].lookback}
+							workout2={this.state.workoutLogs[2].workout[index]}
+							workout5={this.state.workoutLogs[5].workout[index]}
+						/>
 
-						<div>
-						{
-							this.state.exList[index].lookback < 4 ? this.state.workoutLogs[2].workout[index].failCount : this.state.workoutLogs[5].workout[index].failCount
-						} failures at the current weight
-						</div>
-					</div>
-
-					{this.state.exList[index].reps[this.state.set][0]==='AMRAP'?
-						<div className="rep-wheel">
-							<i onClick={(e)=>this.decAmrap(e)} className="fa fa-minus amrap-minus"></i>
-							<span className="rep-counter">{this.state.toggleOnce && this.state.log[index].reps[this.state.set]}</span>
-							<i onClick={(e)=>this.incAmrap(e)} className="fa fa-plus amrap-plus"></i>
-						</div>
-						: null}
-
-					{/* {this.state.log[index].reps[2]} */}
-					<div className="weight-container">
-						<div className="weight-box">
-							<div className="weight-controls">
-								<i onClick={(e)=>this.decWeight(e)} className="fa fa-minus controls"></i>
-								<i onClick={(e)=>this.incWeight(e)} className="fa fa-plus controls"></i>
+						{this.state.exList[index].reps[this.state.set][0]==='AMRAP'?
+							<div className="rep-wheel">
+								<i onClick={(e)=>this.decAmrap(e)} className="fa fa-minus amrap-minus"></i>
+								<span className="rep-counter">{this.state.toggleOnce && this.state.log[index].reps[this.state.set]}</span>
+								<i onClick={(e)=>this.incAmrap(e)} className="fa fa-plus amrap-plus"></i>
 							</div>
-							<div className="weight">
-								{this.state.exList[index].weight + ' lbs'}
-							</div>
+							: null}
 
-						</div>
-							{this.state.exList[index].bar ?
-							<div className="weight-stack">
-								<img alt="Barbell" className="barbell-img" src={require('./barbell.png')}/>
-								<div className="plate-container">
-									<div className="plate">{(this.state.exList[index].weight-45)/2}</div>
-									<div className="plate">{(this.state.exList[index].weight-45)/2}</div>
-								</div>
-							</div>
-								:
-							<div className="weight-stack">
-								<div className="plate-container">
-									<div className="plate">{(this.state.exList[index].weight)/2}</div>
-									<div className="plate">{(this.state.exList[index].weight)/2}</div>
-								</div>
-							</div>
-							}
+						<WeightContainer
+							handleChange={this.handleChange}
+							currentExercise={this.state.exList[index]}
+							decWeight={this.decWeight}
+							incWeight={this.incWeight}
+						/>
+
+						<div className="spacer"></div>
+						<div onClick={(e)=>this.submitReps(e)} className="submit">NEXT</div>
 					</div>
-					<div className="spacer"></div>
-					<div onClick={(e)=>this.submitReps(e)} className="submit">NEXT</div>
+					{this.state.workoutComplete &&
+						<div onClick={this.sendJSON} className="submit">LOG WORKOUT</div>
+					}
 				</div>
 			);
 		}
-	}
-
-	render(){
-		return(
-			<div className="app-container">
-				{!this.state.exIsOpen ? <h1>{Object.keys(exList).map((name, index)=>{
-					return index === this.state.currentWorkout ? name : null
-				})}</h1> : null}
-				{this.openExercise()}
-				{/* {!this.state.exIsOpen? <i onClick={this.fullScreen} className="fa fa-arrows-alt fullscreen"></i> : null} */}
-				{this.state.workoutComplete && !this.state.exIsOpen ? <div onClick={this.sendJSON} className="submit">LOG WORKOUT</div> : null}
-
-				{/* <div onClick={this.sendJSON} className="submit">LOG WORKOUT</div> */}
-
-			</div>
-		)
-	}
-}
-
-class Exercise extends React.Component{
-	constructor(props){
-		super(props);
-		this.openEx = this.openEx.bind(this);
-	}
-	openEx(e){
-		e.preventDefault();
-		this.props.hClick(this.props.name);
-	}
-	render(){
-		return(
-			<div style={!this.props.exIsOpen ? {height:'60px'}:null} onClick={(e)=>this.openEx(e)} className="exercise">
-				<i className={this.props.log[this.props.index]&& this.props.log[this.props.index].sets.length===this.props.exList[this.props.index].sets.length ? 'fa fa-star star gold' : 'fa fa-star-o star' }></i>
-				{this.props.name}
-				{this.props.exIsOpen ? <i className="fa fa-angle-double-left back"></i> : null}
-			</div>
-		)
 	}
 }
 

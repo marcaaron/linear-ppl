@@ -12,7 +12,8 @@
     "react-scripts": "1.0.17"
   },
   "scripts": {
-    "start": "node server.js",
+	"start": "react-scripts start",
+    "node": "node server.js",
     "build": "react-scripts build"
   },
   "devDependencies": {
