@@ -341,6 +341,9 @@ class App extends React.Component{
 							name={ex.name}
 						/>
 					})}
+					{this.state.workoutComplete &&
+						<div onClick={this.sendJSON} className="submit">LOG WORKOUT</div>
+					}
 				</div>
 			);
 		}else{
@@ -428,9 +431,6 @@ class App extends React.Component{
 						<div className="spacer"></div>
 						<div onClick={(e)=>this.submitReps(e)} className="submit">NEXT</div>
 					</div>
-					{this.state.workoutComplete &&
-						<div onClick={this.sendJSON} className="submit">LOG WORKOUT</div>
-					}
 				</div>
 			);
 		}
