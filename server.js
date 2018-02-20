@@ -3,7 +3,7 @@ const MongoClient = require('mongodb').MongoClient
 const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 let db;
 const mongoURI = process.env.MONGODB_URI;
 
@@ -19,7 +19,7 @@ MongoClient.connect(mongoURI, function(err, database){
 		throw err
 	else{
 		db=database.db('ppl');
-		app.listen(port, ()=> console.log(`app live on port 3000`, __dirname));
+		app.listen(port, ()=> console.log(`app live on port ${port}`, __dirname));
 	}
 });
 
