@@ -56,7 +56,6 @@ class App extends React.Component{
 		const xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function(){
 			if (xhttp.readyState === 4 && xhttp.status === 200) {
-				console.log(JSON.parse(xhttp.response));
 				if(JSON.parse(xhttp.response).workouts.length !== 0){
 		       		const prevWorkout = JSON.parse(xhttp.response).workouts[0].prevWorkout;
 					let workoutLogs = JSON.parse(xhttp.response).workouts;
